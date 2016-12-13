@@ -1,0 +1,221 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "API Specification for TrueID Application"
+    },
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/exclusiveBanner": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "sso_id",
+                        "in": "query",
+                        "required": false,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Banner"
+                            }
+                        },
+                        "examples": {
+                          "application/json": {
+                            
+                              "id": 37,
+                              "slug": "trueplookpanya",
+                              "project": "htv",
+                              "channel_code": "139",
+                              "schedule_code": "139",
+                              "channel_name": "ทรู ปลูกปัญญา",
+                              "detail": "ทรูปลูกปัญญา : โครงการปลูกความรู้ สู่อนาคต",
+                              "views": 165597,
+                              "thumbnail": "http://cms-streaming.truetv.tv/data_img/2013/05/p18dt3i2k91fsruqq1g4b1bk71n645.png",
+                              "share_url": "http://tv.truelife.com/live/2800320"
+                              
+                              
+                          }
+                        }
+                    }
+                }
+            }
+        },
+        "/baseShelf": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Shelf"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/list": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "shelf_slug",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Content"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Banner": {
+            "type": "object",
+            "properties": {
+                "banner_id": {
+                    "type": "number"
+                },
+                "title_th": {
+                    "type": "string"
+                },
+                "title_en": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "is_subscribed": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "object",
+                    "properties": {
+                        "image_banner1": {
+                            "type": "string"
+                        },
+                        "image_banner2": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "api_url": {
+                    "type": "string"
+                }
+            }
+        },
+        "Shelf": {
+            "type": "object",
+            "properties": {
+                "shelf_slug": {
+                    "type": "string"
+                },
+                "title_th": {
+                    "type": "string"
+                },
+                "title_en": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "more_url": {
+                    "type": "string"
+                }
+            }
+        },
+        "Content": {
+            "type": "object",
+            "properties": {
+                "primary": {
+                    "type": "object",
+                    "properties": {
+                        "title_th": {
+                            "type": "string"
+                        },
+                        "title_en": {
+                            "type": "string"
+                        },
+                        "detail_th": {
+                            "type": "string"
+                        },
+                        "detail_en": {
+                            "type": "string"
+                        },
+                        "thumbnail": {
+                            "type": "string"
+                        },
+                        "type": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "number"
+                        },
+                        "tag_th": {
+                            "type": "string"
+                        },
+                        "tag_en": {
+                            "type": "string"
+                        },
+                        "api_url": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "secondary": {
+                    "type": "object",
+                    "properties": {
+                        "title_th": {
+                            "type": "string"
+                        },
+                        "title_en": {
+                            "type": "string"
+                        },
+                        "detail_th": {
+                            "type": "string"
+                        },
+                        "detail_en": {
+                            "type": "string"
+                        },
+                        "thumbnail": {
+                            "type": "string"
+                        },
+                        "type": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "number"
+                        },
+                        "tag_th": {
+                            "type": "string"
+                        },
+                        "tag_en": {
+                            "type": "string"
+                        },
+                        "api_url": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
