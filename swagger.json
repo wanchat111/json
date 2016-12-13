@@ -1,0 +1,210 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "API Specification for TrueID Application"
+    },
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/exclusiveBanner": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "sso_id",
+                        "in": "query",
+                        "required": false,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Banner"
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "name": "Apache 2.0",
+                                "url": "http://cms-streaming.truetv.tv/api/tv/ch/?project=htv&cate=all&include=cate_all,detail,stream_info,channel_info,packages&limit=200&page=1&strip_tags=1"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/baseShelf": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Shelf"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/list": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "shelf_slug",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Content"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Banner": {
+            "type": "object",
+            "properties": {
+                "banner_id": {
+                    "type": "number"
+                },
+                "title_th": {
+                    "type": "string"
+                },
+                "title_en": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "is_subscribed": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "object",
+                    "properties": {
+                        "image_banner1": {
+                            "type": "string"
+                        },
+                        "image_banner2": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "api_url": {
+                    "type": "string"
+                }
+            }
+        },
+        "Shelf": {
+            "type": "object",
+            "properties": {
+                "shelf_slug": {
+                    "type": "string"
+                },
+                "title_th": {
+                    "type": "string"
+                },
+                "title_en": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "more_url": {
+                    "type": "string"
+                }
+            }
+        },
+        "Content": {
+            "type": "object",
+            "properties": {
+                "primary": {
+                    "type": "object",
+                    "properties": {
+                        "title_th": {
+                            "type": "string"
+                        },
+                        "title_en": {
+                            "type": "string"
+                        },
+                        "detail_th": {
+                            "type": "string"
+                        },
+                        "detail_en": {
+                            "type": "string"
+                        },
+                        "thumbnail": {
+                            "type": "string"
+                        },
+                        "type": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "number"
+                        },
+                        "tag_th": {
+                            "type": "string"
+                        },
+                        "tag_en": {
+                            "type": "string"
+                        },
+                        "api_url": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "secondary": {
+                    "type": "object",
+                    "properties": {
+                        "title_th": {
+                            "type": "string"
+                        },
+                        "title_en": {
+                            "type": "string"
+                        },
+                        "detail_th": {
+                            "type": "string"
+                        },
+                        "detail_en": {
+                            "type": "string"
+                        },
+                        "thumbnail": {
+                            "type": "string"
+                        },
+                        "type": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "number"
+                        },
+                        "tag_th": {
+                            "type": "string"
+                        },
+                        "tag_en": {
+                            "type": "string"
+                        },
+                        "api_url": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
